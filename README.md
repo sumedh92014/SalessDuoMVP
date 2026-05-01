@@ -1,59 +1,122 @@
-# SalessDuoMVP
-This contains the code for the MVP of SalesDuo
-# Salesduo Early Reviews MVP
+# SalesDuo MVP Prototype
 
-Salesduo is an **Early Reviews platform** that helps brands launch products with verified reviewer participation.
+Frontend-only clickable MVP preview for the SalesDuo Early Reviews platform.
 
-The platform connects:
-- **Brands** who want early traction and product reviews
-- **Reviewers** who discover campaigns, buy/use products, and submit required proof/content
-- **Admins** who manage campaigns, claims, reviewers, brands, and approvals
+## What this is
 
-## MVP Goal
+This prototype demonstrates end-to-end product flows for:
+- Admin
+- Brand
+- Reviewer
 
-Build a **frontend-only clickable MVP preview** of the Salesduo platform.
+All flows are mock-driven and intentionally avoid backend/API dependencies.
 
-The goal is to demonstrate the full product flow visually and functionally without needing a backend.
+---
 
-## Important MVP Rules
+## Local Run (Exact Steps)
 
-- The entire MVP preview must be clickable.
-- Every visible button should either navigate to the next relevant screen or show a clear mock action.
-- The prototype must not stop because of missing backend, auth, payment, database, APIs, approvals, or uploaded files.
-- Use mock data and local state wherever needed.
-- Login, signup, payment, approval, upload, and verification steps should be skippable for preview.
-- Do not leave dead-end screens.
-- Add easy navigation between Admin, Brand, and Reviewer flows.
+1. Install dependencies:
+```bash
+npm install
+```
 
-## Roles
+2. Start development server:
+```bash
+npm run dev
+```
 
-### Brand
-Brands create and manage review campaigns, track reviewer participation, view submissions, and monitor campaign progress.
+3. Open:
+```text
+http://localhost:3000
+```
 
-### Reviewer
-Reviewers browse available campaigns, accept campaign invites, purchase/use products, submit invoices/proof/content, and track reimbursement or claim status.
+4. Use the role selection landing page (`/`) to enter:
+- Admin dashboard
+- Brand dashboard
+- Reviewer dashboard
 
-### Admin
-Admins manage the overall platform, including campaigns, brands, reviewers, claims, approvals, disputes, and platform visibility.
+### Production build locally
+```bash
+npm run build
+npm run start
+```
 
-## Design Direction
+### Lint
+```bash
+npm run lint
+```
 
-Use the reference images as the source of truth for:
-- layout
-- colors
-- spacing
-- card styles
-- buttons
-- typography
-- dashboard structure
-- premium, clean SaaS look
+---
 
-If a screen is not shown in the reference images, create it by extending the same design language consistently.
+## Environment Note
 
-## Build Approach
+No environment variables are required for this MVP prototype.
 
-- Frontend-only MVP
-- Mock data only
-- Clickable navigation
-- Clean responsive UI
-- No production backend required
+- No backend URL required
+- No auth keys required
+- No payment keys required
+- No upload/storage keys required
+
+Everything is mocked in frontend state/UI.
+
+---
+
+## Project Structure
+
+- `/docs` → product logic, statuses, flows, MVP instructions
+- `/references` → UI reference images (design source)
+- `/src/app` → routes/screens
+- `/src/components` → shared UI and layout
+- `/src/lib` → mock data and navigation config
+
+---
+
+## MVP Summary
+
+### Admin Flow
+- Dashboard overview
+- Campaign management (list/detail/review)
+- Claims list/detail and moderation actions
+- Submissions moderation
+- Payments queue actions
+- Reviewer and brand management
+- Invite management
+
+### Brand Flow
+- Dashboard and campaign tracking
+- Campaign creation wizard + preview
+- Mock/skippable payment step
+- Campaign detail, claims, submissions
+- Reports list + campaign report
+
+### Reviewer Flow
+- Dashboard and campaign discovery
+- Campaign accept/decline + slot claim
+- Mock proof submission
+- Claim tracking
+- Submission + edit/resubmission
+- Reimbursement tracking
+
+### Mocked Items
+- Authentication
+- Backend/API persistence
+- File uploads
+- Payment processing
+- Approval workflows (state changes are UI mock)
+- Notifications and exports
+
+### Known Limitation (Codex Environment)
+Build execution in this Codex environment may fail if package registry access is restricted.
+
+Observed issue in this environment:
+- dependency install blocked by registry restrictions
+- `next` binary unavailable
+- `npm run build` cannot complete here
+
+If dependencies install locally, the prototype should run with the commands above.
+
+---
+
+## Deployment
+
+See `DEPLOYMENT.md` for Vercel deployment steps.
